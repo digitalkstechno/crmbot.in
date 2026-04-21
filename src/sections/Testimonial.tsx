@@ -3,13 +3,15 @@ import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { motion, Variants } from "framer-motion";
+import type { Swiper as SwiperType } from "swiper";
+import "swiper/swiper-bundle.css";
 
 // Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
+// import "swiper/css";
+// import "swiper/css/navigation";
 
 const Testimonial = () => {
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<SwiperType | null>(null);
 
   const testimonials = [
     {
@@ -74,7 +76,7 @@ const Testimonial = () => {
 
   return (
     <section
-      className="bg-[#f9fafb] py-20 px-6 sm:px-10 md:px-12 lg:px-15  font-jakarta"
+      className="bg-[#f9fafb] py-20 px-6 sm:px-10 md:px-12 lg:px-15 font-jakarta"
       id="testimonials"
     >
       <div className="max-w-7xl mx-auto">
@@ -123,7 +125,7 @@ const Testimonial = () => {
             }}
           >
             {testimonials.map((item, index) => (
-              <SwiperSlide key={index} className="!h-auto">
+              <SwiperSlide key={index} className="!h-auto py-3">
                 <motion.div
                   variants={fadeInUp}
                   whileHover={{ y: -10 }}

@@ -27,11 +27,20 @@ const Integration = () => {
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, scale: 0.5, y: 20 },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
-      y: 0, 
-      transition: { type: "spring", stiffness: 260, damping: 20 } 
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 200, damping: 15 },
+    },
+  };
+
+  const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
     },
   };
 
@@ -45,10 +54,10 @@ const Integration = () => {
     >
       <div className="max-w-7xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
           className="mb-14 flex flex-col items-center text-center"
           id="features"
         >
@@ -63,30 +72,21 @@ const Integration = () => {
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-x-4 gap-y-5 max-w-[1100px] mx-auto">
+          className="flex flex-wrap justify-center gap-x-4 gap-y-5 max-w-[1100px] mx-auto"
+        >
           {tools.map((tool, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              // Continuous Floating Effect
-              animate={{
-                y: [0, -10, 0],
-              }}
-              transition={{
-                duration: 3 + (index % 3), 
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              whileHover={{ 
-                scale: 1.1, 
-                rotate: [0, -2, 2, 0],
+              whileHover={{
+                scale: 1.05,
                 backgroundColor: "#f0fdf4",
-                borderColor: "#22c55e"
+                borderColor: "#22c55e",
               }}
               className="flex items-center gap-3 bg-white border border-gray-100 rounded-full px-5 py-2.5 shadow-sm hover:border-green-300 transition-all"
             >
