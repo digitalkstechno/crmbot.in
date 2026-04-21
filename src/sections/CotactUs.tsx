@@ -72,11 +72,12 @@ const contactLinks = [
 const offices = [
   {
     tag: "OFFICE 01",
-    name: "Ikata Varachha",
+    name: "Mota Varachha",
     address:
       "A-403, 4th Floor, Memorial Raj-systems, Sector 12, Ikata Varachha, Surat, Gujarat – 395006",
     phone: "+91 98765 43210",
-    mapLink: "https://maps.google.com",
+    mapUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.966456073715!2d72.8887!3d21.2327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDEzJzU3LjciTiA3MsKwNTMnMTkuMyJF!5e0!3m2!1sen!2sin!4v1640000000000!5m2!1sen!2sin",
   },
   {
     tag: "OFFICE 02",
@@ -84,7 +85,8 @@ const offices = [
     address:
       "201, Baroda Prestige, Remote Flyover, Gulej, Surat – 395010, India",
     phone: "+91 98765 43211",
-    mapLink: "https://maps.google.com",
+    mapUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.5!2d72.86!3d21.21!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDEyJzM2LjAiTiA3MsKwNTEnMzYuMCJF!5e0!3m2!1sen!2sin!4v1640000000000!5m2!1sen!2sin",
   },
 ];
 
@@ -221,11 +223,11 @@ export default function ContactUs() {
                 <h3 className="font-sans-dm mb-2 text-xl font-bold text-slate-900">
                   {office.name}
                 </h3>
-                <p className="font-jakarta text-sm leading-relaxed text-slate-500 mb-5">
+                <p className="font-jakarta text-sm leading-relaxed text-slate-500 min-h-[30px] md:min-h-[60px]">
                   {office.address}
                 </p>
 
-                <div className="flex flex-col min-[350px]:flex-row items-left min-[350px]:items-center  justify-between gap-2 mt-2">
+                <div className="flex items-center justify-between mt-4">
                   <a
                     href={`tel:${office.phone.replace(/\s/g, "")}`}
                     className="font-jakarta inline-flex items-center gap-2 text-sm font-semibold text-[#00bc7d] hover:text-[#009d69] transition-colors"
@@ -239,22 +241,16 @@ export default function ContactUs() {
                     </svg>
                     {office.phone}
                   </a>
+                </div>
 
-                  <a
-                    href={office.mapLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-jakarta w-fit inline-flex items-center gap-1.5 rounded-xl border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-600 transition-all hover:border-[#00bc7d] hover:text-[#00bc7d]"
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="h-3.5 w-3.5"
-                    >
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                    View Map
-                  </a>
+                <div className="w-full h-52 rounded-2xl overflow-hidden border border-slate-100 mt-6">
+                  <iframe
+                    src={office.mapUrl}
+                    className="w-full h-full grayscale-[20%] group-hover:grayscale-0 transition-all"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                  ></iframe>
                 </div>
               </div>
             ))}
@@ -307,10 +303,10 @@ export default function ContactUs() {
                       {item.icon}
                     </span>
                     <div>
-                      <p className="font-jakarta text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                      <p className="font-jakarta text-[10px] font-bold uppercase tracking-widest text-slate-400 text-left">
                         {item.label}
                       </p>
-                      <p className="font-jakarta mt-0.5 text-sm font-semibold text-slate-800">
+                      <p className="font-jakarta mt-0.5 text-sm font-semibold text-slate-800 text-left">
                         {item.value}
                       </p>
                     </div>

@@ -158,9 +158,9 @@ export default function HeroSection() {
       `}</style>
 
       {/* ── section ── */}
-      <section className="font-jakarta relative min-h-screen overflow-hidden bg-gradient-to-br from-[#f0fdf4] via-white to-white">
+      <section className="font-jakarta relative overflow-hidden bg-gradient-to-br from-[#f0fdf4] via-white to-white">
         {/* bg blobs */}
-        <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 py-15 sm:py-20 lg:grid-cols-2 lg:gap-20 px-6 sm:px-10 md:px-12 lg:px-15 lg:py-20">
+        <div className="relative w-full grid grid-cols-1 items-center gap-12 py-15 sm:py-20 lg:grid-cols-2 lg:gap-0 px-6 sm:px-10 md:px-12 lg:px-15 lg:py-20">
           {/* ── LEFT – Content ── */}
 
           <motion.div 
@@ -171,20 +171,24 @@ export default function HeroSection() {
           > 
 
             {/* top badge */}
-            <motion.span variants={fadeInUp} className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-1.5 text-[10px] sm:text-[12px] font-bold uppercase tracking-widest text-emerald-700 shadow-sm">
+            <motion.span 
+            variants={fadeInUp} 
+            className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-1.5 text-[10px] sm:text-[12px] 2xl:text-[14px] font-bold uppercase tracking-widest text-emerald-700 shadow-sm">
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
               Meta Official WhatsApp API Partner
             </motion.span>
 
             {/* headline */}
-            <motion.h1 variants={fadeInUp} className="font-Sans mr:3 mb-6 font-extrabold leading-[1.08] text-slate-900 text-[28px] min-[347px]:text-[33px] min-[403px]:text-[38px] min-[460px]:text-[44px] sm:text-[50px] lg:text-[43px] min-[1047px]:text-[45px] xl:text-[48px]">
+            <motion.h1 
+            variants={fadeInUp} 
+            className="font-Sans mr:3 mb-6 font-extrabold leading-[1.08] text-slate-900 text-[28px] min-[347px]:text-[33px] min-[403px]:text-[38px] min-[460px]:text-[44px] sm:text-[50px] lg:text-[38px] min-[1047px]:text-[40px] xl:text-[50px] 2xl:text-[65px]">
               WhatsApp CRM for
               <br />
               <span className="text-emerald-500">Every Business</span>
             </motion.h1>
 
             {/* subtitle */}
-            <motion.p variants={fadeInUp} className="mb-6 max-w-[500px] text-[13px] min-[403px]:text-[14px] sm:text-[15px] md:text-md min-[1171px]:text-lg leading-relaxed text-slate-500">
+            <motion.p variants={fadeInUp} className="mb-6 max-w-[400px] 2xl:max-w-[600px] text-[13px] min-[403px]:text-[14px] sm:text-[15px] md:text-md min-[1171px]:text-lg 2xl:text-[22px] leading-relaxed text-slate-500">
               Automate leads, campaigns &amp; grow with Meta Official WhatsApp
               API. Built for Indian businesses — from textile to real estate.
             </motion.p>
@@ -195,7 +199,7 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.03 }} 
                 whileTap={{ scale: 0.97 }}
                 href="#"
-                className=" inline-flex items-center justify-center gap-2.5 rounded-2xl bg-emerald-500 px-0 min-[377px]:px-5 sm:px-6 py-2 sm:py-3.5 text-sm font-bold text-white shadow-lg shadow-emerald-300/50 transition-all hover:-translate-y-0.5 hover:bg-emerald-600 hover:shadow-emerald-400/50 max-[377px]:w-full"
+                className=" inline-flex items-center justify-center gap-2.5 rounded-2xl bg-emerald-500 px-0 min-[377px]:px-5 sm:px-6 2xl:px-10 py-2 sm:py-3.5 2xl:py-5 text-sm 2xl:text-[16px] font-bold text-white shadow-lg shadow-emerald-300/50 transition-all hover:-translate-y-0.5 hover:bg-emerald-600 hover:shadow-emerald-400/50 max-[377px]:w-full"
               >
                 <svg
                   className="h-4 w-4"
@@ -214,7 +218,7 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.03 }} 
                 whileTap={{ scale: 0.97 }}
                 href="#"
-                className="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-slate-200 bg-white px-0 min-[377px]:px-5 sm:px-6 py-2 sm:py-3.5 text-sm font-bold text-slate-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-emerald-300 hover:text-emerald-700 max-[377px]:w-full"
+                className="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-slate-200 bg-white px-0 min-[377px]:px-5 sm:px-6 2xl:px-10 py-2 sm:py-3.5 2xl:py-5 text-sm 2xl:text-[16px] font-bold text-slate-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-emerald-300 hover:text-emerald-700 max-[377px]:w-full"
               >
                 <svg
                   className="h-4 w-4"
@@ -236,42 +240,42 @@ export default function HeroSection() {
             <motion.div variants={fadeInUp} className="mt-5 grid grid-cols-1 min-[377px]:grid-cols-3 gap-4 border-t border-slate-100 pt-5">
               {/* Happy Clients Box */}
               <div
-                className="flex flex-col items-center min-[377px]:items-start p-5 rounded-2xl bg-white 
+                className="flex flex-col items-center min-[377px]:items-start p-5 2xl:p-8 rounded-2xl bg-white 
                   border border-slate-100 shadow-sm transition-all 
                   hover:shadow-md hover:border-emerald-100 group"
               >
-                <span className="text-[24px] sm:text-[25px] font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                <span className="text-[24px] sm:text-[25px] 2xl:text-[27px] font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors">
                   200+
                 </span>
-                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">
+                <span className="text-[11px] 2xl:text-[13px] font-bold text-slate-500 uppercase tracking-wider mt-1">
                   Happy Clients
                 </span>
               </div>
 
               {/* Years Exp. Box */}
               <div
-                className="flex flex-col items-center min-[377px]:items-start p-5 rounded-2xl bg-white 
+                className="flex flex-col items-center min-[377px]:items-start p-5 2xl:p-8 rounded-2xl bg-white 
                   border border-slate-100 shadow-sm transition-all 
                   hover:shadow-md hover:border-emerald-100 group"
               >
-                <span className="text-[24px] sm:text-[25px] font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                <span className="text-[24px] 2xl:text-[27px] sm:text-[25px] font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors">
                   8+
                 </span>
-                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">
+                <span className="text-[11px] 2xl:text-[13px] font-bold text-slate-500 uppercase tracking-wider mt-1">
                   Years Exp.
                 </span>
               </div>
 
               {/* Industries Box */}
               <div
-                className="flex flex-col items-center min-[377px]:items-start p-5 rounded-2xl bg-white 
+                className="flex flex-col items-center min-[377px]:items-start p-5 2xl:p-8 rounded-2xl bg-white 
                   border border-slate-100 shadow-sm transition-all 
                   hover:shadow-md hover:border-emerald-100 group"
               >
-                <span className="text-[24px] sm:text-[25px] font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                <span className="text-[24px] 2xl:text-[27px] sm:text-[25px] font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors">
                   5+
                 </span>
-                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">
+                <span className="text-[11px] 2xl:text-[13px] font-bold text-slate-500 uppercase tracking-wider mt-1">
                   Industries
                 </span>
               </div>
@@ -283,9 +287,10 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative flex justify-center lg:justify-end">
+            className="relative flex justify-center lg:justify-end w-full">
             {/* floating top badge */}
-            <FloatBadge className="float-1 -top-4 lg:-top-3 -left-2 sm:left-[5%] md:left-[12%]  min-[909px]:left-[18%] lg:-left-10 text-[11px] sm:text-xs">
+            <FloatBadge className="float-1 -top-4 lg:-top-3 -left-2 sm:-left-[3%] min-[909px]:left-[18%] lg:-left-1 text-[11px] sm:text-xs">
+
               <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-[10px] text-white">
                 ✓
               </span>
@@ -293,13 +298,12 @@ export default function HeroSection() {
             </FloatBadge>
 
             {/* floating bottom badge */}
-            <FloatBadge className="float-2 -bottom-4 -right-1 sm:right-[1%] md:right-[17%] lg:-right-10 text-[11px] sm:text-xs">
+            <FloatBadge className="float-2 -bottom-4 -right-1 sm:-right-[3%] lg:-right-10 text-[11px] sm:text-xs">
               🚀 Campaign Sent to 2,400
             </FloatBadge>
 
             {/* dashboard card */}
-            <div 
-            className="w-full max-w-[480px] overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-2xl shadow-emerald-100/60">
+            <div className="w-full max-w-[800px] overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-2xl shadow-emerald-100/60">
               {/* mac-style title bar */}
               <div className="flex items-center justify-between border-b border-slate-800  bg-slate-900 px-5 py-3.5">
                 <div className="flex items-center gap-1.5">

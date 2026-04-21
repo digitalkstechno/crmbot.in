@@ -129,7 +129,7 @@ const Testimonial = () => {
                 <motion.div
                   variants={fadeInUp}
                   whileHover={{ y: -10 }}
-                  className="bg-white border border-gray-100 p-8 rounded-[24px] shadow-sm h-full flex flex-col justify-between "
+                  className="bg-white border border-gray-100 p-8 rounded-[24px] shadow-sm h-full flex flex-col justify-between"
                 >
                   <div>
                     {/* Stars */}
@@ -149,7 +149,7 @@ const Testimonial = () => {
                   {/* Profile Section */}
                   <div className="flex items-center gap-4 mt-8">
                     <div
-                      className={`${item.color} w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm`}
+                      className={`${item.color} w-12 min-[330px]:w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm`}
                     >
                       {item.initials}
                     </div>

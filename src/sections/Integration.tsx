@@ -67,7 +67,7 @@ const Integration = () => {
           <h2 className="text-[30px] min-[347px]:text-[32px] min-[403px]:text-[38px] sm:text-[40px] md:text-[45px] font-bold leading-[1.15] text-[#ffff] mb-1 font-Sans tracking-tight">
             Works with Tools You Already Use
           </h2>
-          <p className="text-[12px] min-[403px]:text-[14px] sm:text-[16px]text-[#6b7280] max-w-[520px] leading-relaxed font-jakarta">
+          <p className="text-[12px] min-[403px]:text-[14px] sm:text-[16px] text-[#bec3cd] max-w-[520px] leading-relaxed font-jakarta">
             Seamlessly connect CRMbot with your existing business software
           </p>
         </motion.div>

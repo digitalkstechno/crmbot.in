@@ -60,7 +60,7 @@ const Onboarding = () => {
       `,
         }}
       />
-      <section className="bg-[#eff9f2] py-20 px-6 sm:px-10 md:px-12 lg:px-15 min-h-screen flex flex-col justify-center">
+      <section className="bg-[#eff9f2] py-20 px-6 sm:px-10 md:px-12 lg:px-15 flex flex-col justify-center">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
