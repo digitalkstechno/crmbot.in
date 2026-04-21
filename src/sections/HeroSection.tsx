@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 // ─── data ──────────────────────────────────────────────────────────────────
 const barData = [45, 62, 53, 80, 58, 70, 42];
@@ -86,18 +86,23 @@ interface StatItem {
 function FloatBadge({
   children,
   className = "",
+  delay = 0
 }: {
   children: React.ReactNode;
   className?: string;
+  delay?: number;
 }) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay, duration: 0.5 }}
       className={`absolute z-20 flex items-center gap-2 rounded-2xl border border-white/60
         bg-white px-4 py-2.5 shadow-xl shadow-black/10 text-sm font-semibold
         text-slate-800 backdrop-blur-sm ${className}`}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
@@ -116,6 +121,20 @@ export default function HeroSection() {
     },
     { label: "Open Rate", value: openRate, format: (n) => n + "%" },
   ];
+
+  // Animation Variants
+  const fadeInUp : Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  const staggerContainer: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
 
   return (
     <>
@@ -142,29 +161,39 @@ export default function HeroSection() {
       <section className="font-jakarta relative min-h-screen overflow-hidden bg-gradient-to-br from-[#f0fdf4] via-white to-white">
         {/* bg blobs */}
         <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 py-15 sm:py-20 lg:grid-cols-2 lg:gap-20 px-6 sm:px-10 md:px-12 lg:px-15 lg:py-20">
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          {/* ── LEFT – Content ── */}
+
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="flex flex-col items-center lg:items-start text-center lg:text-left"
+          > 
+
             {/* top badge */}
-            <span className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-1.5 text-[10px] sm:text-[12px] font-bold uppercase tracking-widest text-emerald-700 shadow-sm">
+            <motion.span variants={fadeInUp} className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-1.5 text-[10px] sm:text-[12px] font-bold uppercase tracking-widest text-emerald-700 shadow-sm">
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
               Meta Official WhatsApp API Partner
-            </span>
+            </motion.span>
 
             {/* headline */}
-            <h1 className="font-Sans mr:3 mb-6 font-extrabold leading-[1.08] text-slate-900 text-[28px] min-[347px]:text-[33px] min-[403px]:text-[38px] min-[460px]:text-[44px] sm:text-[50px] lg:text-[43px] min-[1047px]:text-[45px] xl:text-[48px]">
+            <motion.h1 variants={fadeInUp} className="font-Sans mr:3 mb-6 font-extrabold leading-[1.08] text-slate-900 text-[28px] min-[347px]:text-[33px] min-[403px]:text-[38px] min-[460px]:text-[44px] sm:text-[50px] lg:text-[43px] min-[1047px]:text-[45px] xl:text-[48px]">
               WhatsApp CRM for
               <br />
               <span className="text-emerald-500">Every Business</span>
-            </h1>
+            </motion.h1>
 
             {/* subtitle */}
-            <p className="mb-6 max-w-[500px] text-[13px] min-[403px]:text-[14px] sm:text-[15px] md:text-md min-[1171px]:text-lg leading-relaxed text-slate-500">
+            <motion.p variants={fadeInUp} className="mb-6 max-w-[500px] text-[13px] min-[403px]:text-[14px] sm:text-[15px] md:text-md min-[1171px]:text-lg leading-relaxed text-slate-500">
               Automate leads, campaigns &amp; grow with Meta Official WhatsApp
               API. Built for Indian businesses — from textile to real estate.
-            </p>
+            </motion.p>
 
             {/* CTA buttons */}
-            <div className="flex flex-wrap gap-4 justify-center min-[377px]:justify-start items-center min-[377px]:items-start">
-              <a
+            <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 justify-center min-[377px]:justify-start items-center min-[377px]:items-start">
+              <motion.a
+                whileHover={{ scale: 1.03 }} 
+                whileTap={{ scale: 0.97 }}
                 href="#"
                 className=" inline-flex items-center justify-center gap-2.5 rounded-2xl bg-emerald-500 px-0 min-[377px]:px-5 sm:px-6 py-2 sm:py-3.5 text-sm font-bold text-white shadow-lg shadow-emerald-300/50 transition-all hover:-translate-y-0.5 hover:bg-emerald-600 hover:shadow-emerald-400/50 max-[377px]:w-full"
               >
@@ -179,9 +208,11 @@ export default function HeroSection() {
                   <path d="M16 2v4M8 2v4M3 10h18" />
                 </svg>
                 Book Demo
-              </a>
+              </motion.a>
 
-              <a
+              <motion.a 
+                whileHover={{ scale: 1.03 }} 
+                whileTap={{ scale: 0.97 }}
                 href="#"
                 className="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-slate-200 bg-white px-0 min-[377px]:px-5 sm:px-6 py-2 sm:py-3.5 text-sm font-bold text-slate-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-emerald-300 hover:text-emerald-700 max-[377px]:w-full"
               >
@@ -196,13 +227,13 @@ export default function HeroSection() {
                   <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
                 </svg>
                 View Portfolio
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
 
             {/* trust avatars */}
 
             {/* ── STATS SECTION  ── */}
-            <div className="mt-5 grid grid-cols-1 min-[377px]:grid-cols-3 gap-4 border-t border-slate-100 pt-5">
+            <motion.div variants={fadeInUp} className="mt-5 grid grid-cols-1 min-[377px]:grid-cols-3 gap-4 border-t border-slate-100 pt-5">
               {/* Happy Clients Box */}
               <div
                 className="flex flex-col items-center min-[377px]:items-start p-5 rounded-2xl bg-white 
@@ -244,11 +275,15 @@ export default function HeroSection() {
                   Industries
                 </span>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* ── RIGHT – Dashboard Mockup ── */}
-          <div className="relative flex justify-center lg:justify-end">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative flex justify-center lg:justify-end">
             {/* floating top badge */}
             <FloatBadge className="float-1 -top-4 lg:-top-3 -left-2 sm:left-[5%] md:left-[12%]  min-[909px]:left-[18%] lg:-left-10 text-[11px] sm:text-xs">
               <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-[10px] text-white">
@@ -263,7 +298,8 @@ export default function HeroSection() {
             </FloatBadge>
 
             {/* dashboard card */}
-            <div className="w-full max-w-[480px] overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-2xl shadow-emerald-100/60">
+            <div 
+            className="w-full max-w-[480px] overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-2xl shadow-emerald-100/60">
               {/* mac-style title bar */}
               <div className="flex items-center justify-between border-b border-slate-800  bg-slate-900 px-5 py-3.5">
                 <div className="flex items-center gap-1.5">
@@ -346,7 +382,7 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
       <div className="w-full bg-[#00bc7d] py-2 overflow-hidden flex items-center">

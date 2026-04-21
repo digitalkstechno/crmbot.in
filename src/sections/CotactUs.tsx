@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, Variants } from "framer-motion";
 
 // ── types ────────────────────────────────────────────────────────────────────
 interface FormData {
@@ -87,6 +88,25 @@ const offices = [
   },
 ];
 
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
 // ── input component ───────────────────────────────────────────────────────────
 function Input({
   label,
@@ -158,7 +178,13 @@ export default function ContactUs() {
       >
         <div className="mx-auto max-w-6xl">
           {/* header */}
-          <div className="mb-14 flex flex-col items-center text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            className="mb-14 flex flex-col items-center text-center"
+          >
             <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta font-[600] tracking-[1.5px] text-[#00bc7d] uppercase mb-2 block">
               Get In Touch
             </span>
@@ -168,10 +194,16 @@ export default function ContactUs() {
             <p className="text-[12px] min-[403px]:text-[14px] sm:text-[16px] text-[#6b7280] max-w-[520px] leading-relaxed font-jakarta">
               Two locations in Surat &amp; Baroda — ready to serve you
             </p>
-          </div>
+          </motion.div>
 
           {/* offices grid */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 gap-6 md:grid-cols-2 relative"
+          >
             <div className="hidden md:block absolute left-1/2 top-6 bottom-6 w-px bg-slate-200" />
             {offices.map((office) => (
               <div
@@ -226,7 +258,7 @@ export default function ContactUs() {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -234,22 +266,35 @@ export default function ContactUs() {
       <section className="font-sans-dm bg-white py-10 px-6 sm:px-10 md:px-12 lg:px-15">
         <div className="mx-auto max-w-6xl">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-            
             <div className="flex flex-col text-center md:text-left w-full">
-              <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta mb-1 inline-block font-bold uppercase tracking-[2px] text-[#00bc7d]">
-                Send a Message
-              </span>
-              <h2 className="text-[30px] min-[347px]:text-[32px] min-[403px]:text-[38px] sm:text-[40px] md:text-[40px] font-sans-dm mb-1 font-bold leading-tight text-slate-900 ">
-                Let&apos;s Start a<br />
-                <span className="text-[#00bc7d]">Conversation</span>
-              </h2>
-              <p className="text-[12px] min-[403px]:text-[14px] sm:text-[16px] font-jakarta mb-10 max-w-md leading-relaxed text-slate-500 mx-auto md:mx-0 text-center md:text-left">
-                Have a question or want to see how CRMbot can help your
-                business? Our team will reach out within 24 hours.
-              </p>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeInUp}
+                className="mb-14 flex flex-col"
+              >
+                <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta mb-1 inline-block font-bold uppercase tracking-[2px] text-[#00bc7d]">
+                  Send a Message
+                </span>
+                <h2 className="text-[30px] min-[347px]:text-[32px] min-[403px]:text-[38px] sm:text-[40px] md:text-[40px] font-sans-dm mb-1 font-bold leading-tight text-slate-900 ">
+                  Let&apos;s Start a<br />
+                  <span className="text-[#00bc7d]">Conversation</span>
+                </h2>
+                <p className="text-[12px] min-[403px]:text-[14px] sm:text-[16px] font-jakarta mb-4 max-w-md leading-relaxed text-slate-500 mx-auto md:mx-0 text-center md:text-left">
+                  Have a question or want to see how CRMbot can help your
+                  business? Our team will reach out within 24 hours.
+                </p>
+              </motion.div>
 
               {/* contact items */}
-              <div className="flex flex-col gap-4">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeInUp}
+                className="flex flex-col gap-4"
+              >
                 {contactLinks.map((item) => (
                   <a
                     key={item.label}
@@ -280,10 +325,9 @@ export default function ContactUs() {
                     </svg>
                   </a>
                 ))}
-              </div>
+              </motion.div>
             </div>
 
-         
             <div className="rounded-3xl border border-slate-100 p-8 shadow-sm">
               <div className="mb-6">
                 <h3 className="font-sans-dm text-2xl font-bold text-slate-900">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, Variants } from "framer-motion";
 
 // ── feature data ──────────────────────────────────────────────────────────────
 const features = [
@@ -9,7 +10,13 @@ const features = [
     title: "Live Dashboard",
     desc: "Real-time view of leads, campaigns, conversion rates & team performance in one place.",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-6 w-6">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.8}
+        className="h-6 w-6"
+      >
         <rect x="3" y="3" width="7" height="7" rx="1.5" />
         <rect x="14" y="3" width="7" height="7" rx="1.5" />
         <rect x="3" y="14" width="7" height="7" rx="1.5" />
@@ -24,7 +31,13 @@ const features = [
     title: "Campaign Management",
     desc: "Send bulk WhatsApp messages with rich media, schedule campaigns & track delivery.",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-6 w-6">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.8}
+        className="h-6 w-6"
+      >
         <path d="M22 2L11 13" />
         <path d="M22 2L15 22l-4-9-9-4 20-7z" />
       </svg>
@@ -37,7 +50,13 @@ const features = [
     title: "Lead Management",
     desc: "Capture, assign, track & follow up on leads from multiple channels automatically.",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-6 w-6">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.8}
+        className="h-6 w-6"
+      >
         <circle cx="12" cy="8" r="4" />
         <path d="M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6" />
         <path d="M19 8l2 2-2 2M16 10h5" />
@@ -51,7 +70,13 @@ const features = [
     title: "WhatsApp Automation",
     desc: "Auto-reply, drip sequences, chatbot flows & instant lead response powered by Meta API.",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-6 w-6">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.8}
+        className="h-6 w-6"
+      >
         <path d="M12 2a10 10 0 1 0 10 10" />
         <path d="M22 2L12 12" />
         <path d="M17 2h5v5" />
@@ -65,7 +90,13 @@ const features = [
     title: "Templates",
     desc: "Pre-approved WhatsApp message templates for every stage of the customer journey.",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-6 w-6">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.8}
+        className="h-6 w-6"
+      >
         <rect x="3" y="3" width="18" height="18" rx="2" />
         <path d="M3 9h18M9 21V9" />
       </svg>
@@ -78,7 +109,13 @@ const features = [
     title: "Reports & Analytics",
     desc: "Detailed reports on open rates, response time, revenue & team-level insights.",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-6 w-6">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.8}
+        className="h-6 w-6"
+      >
         <path d="M18 20V10M12 20V4M6 20v-6" />
       </svg>
     ),
@@ -86,6 +123,26 @@ const features = [
     light: "#e6faf3",
   },
 ];
+
+// ─── Animation Variants ───
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
 
 // ── card ──────────────────────────────────────────────────────────────────────
 function FeatureCard({
@@ -137,7 +194,6 @@ function FeatureCard({
 
       {/* ── content ── */}
       <div className="relative z-10 flex flex-col gap-4 p-7">
-
         {/* top row: icon + pill */}
         <div className="flex items-start justify-between">
           <div
@@ -150,8 +206,6 @@ function FeatureCard({
           >
             {icon}
           </div>
-
-          
         </div>
 
         {/* title */}
@@ -170,9 +224,6 @@ function FeatureCard({
         >
           {desc}
         </p>
-
-       
-
       </div>
 
       {/* ── bottom accent line ── */}
@@ -197,28 +248,39 @@ export default function Features() {
 
       <section className="bg-[#ffff] py-24 px-6 sm:px-10 md:px-12 lg:px-15">
         <div className="mx-auto max-w-6xl">
-
           {/* ── header ── */}
 
-          <div className="mb-14 flex flex-col items-center text-center" id="features">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            className="mb-14 flex flex-col items-center text-center"
+            id="features"
+          >
             <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta font-[600] tracking-[1.5px] text-[#00bc7d] uppercase mb-2 block ">
               Platform Features
             </span>
             <h2 className="text-[29px] min-[347px]:text-[31px] min-[403px]:text-[37px] sm:text-[39px] md:text-[43px] font-bold leading-[1.15] text-[#1a1a1a] mb-1 font-Sans tracking-tight">
-              Everything You Need to <br />Convert & Retain
+              Everything You Need to <br />
+              Convert & Retain
             </h2>
             <p className="text-[12px] min-[403px]:text-[14px] sm:text-[16px] text-[#6b7280] max-w-[520px] leading-relaxed font-jakarta">
-              A complete growth stack — from first contact to closed deal, all powered by WhatsApp.
+              A complete growth stack — from first contact to closed deal, all
+              powered by WhatsApp.
             </p>
-          </div>
+          </motion.div>
 
           {/* ── grid ── */}
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.2 }}
+                      viewport={{ once: true }} className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f, i) => (
               <FeatureCard key={f.num} index={i} {...f} />
             ))}
-          </div>
-
+          </motion.div>
         </div>
       </section>
     </>

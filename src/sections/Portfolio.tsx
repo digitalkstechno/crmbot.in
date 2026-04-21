@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, Variants } from "framer-motion";
 
 const Portfolio = () => {
   const projects = [
@@ -46,12 +47,40 @@ const Portfolio = () => {
     },
   ];
 
+  // ─── Animation Variants ───
+  const staggerContainer: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
-    <section className="bg-white py-16 px-6 sm:px-10 md:px-12 lg:px-15 font-jakarta" id="portfolio">
+    <section
+      className="bg-white py-16 px-6 sm:px-10 md:px-12 lg:px-15 font-jakarta"
+      id="portfolio"
+    >
       <div className="max-w-7xl mx-auto">
-        <div
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
           className="mb-14 flex flex-col items-center text-center"
-          id="features">
+          id="features"
+        >
           <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta font-[600] tracking-[1.5px] text-[#00bc7d] uppercase mb-2 block ">
             Our Work
           </span>
@@ -62,9 +91,15 @@ const Portfolio = () => {
             A complete growth stack — from first contact to closed deal, all
             powered by WhatsApp.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-8"
+        >
           {projects.map((project, index) => (
             <div
               key={index}
@@ -110,7 +145,7 @@ const Portfolio = () => {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion, Variants } from "framer-motion";
 import {
   Scissors,
   Building2,
@@ -10,6 +11,26 @@ import {
   Settings,
   ArrowRight,
 } from "lucide-react";
+
+// ─── Animation Variants ───
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
 
 export default function Industries() {
   const industries = [
@@ -57,10 +78,19 @@ export default function Industries() {
         }}
       />
 
-      <section className="py-24 px-6 sm:px-10 md:px-12 lg:px-15 bg-[#f9fafb] border-y border-slate-200" id="industries">
+      <section
+        className="py-24 px-6 sm:px-10 md:px-12 lg:px-15 bg-[#f9fafb] border-y border-slate-200"
+        id="industries"
+      >
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
-          <div className="mb-14 flex flex-col items-center text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            className="mb-14 flex flex-col items-center text-center"
+          >
             <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta font-[600] tracking-[1.5px] text-[#00bc7d] uppercase mb-2 block ">
               Industries We Serve
             </span>
@@ -71,10 +101,16 @@ export default function Industries() {
               Specialised CRM solutions tailored for each sector with
               industry-specific workflows.
             </p>
-          </div>
+          </motion.div>
 
           {/* Industry Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
             {industries.map((item, index) => (
               <div key={index} className="group relative">
                 <div className="h-full p-8 bg-white border border-slate-200 rounded-[24px] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-black/5 group-hover:border-[#22c55e] cursor-default flex flex-col justify-between">
@@ -94,7 +130,6 @@ export default function Industries() {
                     <p className="text-[14px] text-[#6b7280] leading-[1.6] font-jakarta mb-3">
                       {item.desc}
                     </p>
-
                   </div>
 
                   {/* Static Explore Text */}
@@ -104,7 +139,7 @@ export default function Industries() {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

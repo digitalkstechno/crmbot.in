@@ -1,6 +1,26 @@
 "use client";
 
 import Link from "next/link";
+import { motion, Variants } from "framer-motion";
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
 
 export default function CTA() {
   return (
@@ -33,7 +53,13 @@ export default function CTA() {
           }}
         />
 
-        <div className="relative z-10 mx-auto max-w-3xl">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          className="relative z-10 mx-auto max-w-3xl"
+        >
           {/* tag */}
           <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta font-[600] tracking-[1.5px] text-[#00bc7d] uppercase mb-2 block">
             Live Demo
@@ -61,7 +87,7 @@ export default function CTA() {
             </svg>
             Book Free Demo
           </Link>
-        </div>
+        </motion.div>
       </section>
     </>
   );
