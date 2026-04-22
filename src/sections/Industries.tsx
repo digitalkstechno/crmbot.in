@@ -61,7 +61,7 @@ export default function Industries() {
   ];
 
   return (
-    <div suppressHydrationWarning>
+    <div suppressHydrationWarning  className="relative">
       <style
         dangerouslySetInnerHTML={{
           __html: `

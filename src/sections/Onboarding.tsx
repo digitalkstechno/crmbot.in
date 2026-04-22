@@ -9,10 +9,8 @@ const Onboarding = () => {
     offset: ["start center", "end center"],
   });
   const maxProgress = useRef(0);
-  const lineScale = useTransform(scrollYProgress, (v) => {
-    if (v > maxProgress.current) maxProgress.current = v;
-    return maxProgress.current;
-  });
+ 
+  const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const steps = [
     {
@@ -61,7 +59,7 @@ const Onboarding = () => {
   };
 
   return (
-    <div suppressHydrationWarning>
+    <div suppressHydrationWarning className="relative">
       <style
         dangerouslySetInnerHTML={{
           __html: `
