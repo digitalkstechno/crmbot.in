@@ -3,12 +3,6 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import {
-  Scissors,
-  Building2,
-  Calculator,
-  Factory,
-  ShoppingBag,
-  Settings,
   ArrowRight,
 } from "lucide-react";
 
@@ -35,34 +29,34 @@ const fadeInUp: Variants = {
 export default function Industries() {
   const industries = [
     {
-      icon: <Scissors className="w-6 h-6" />,
-      tag: "Textile",
-      desc: "Manage leads, follow-ups & dispatch messages to fabric & apparel wholesalers automatically.",
+      icon: "🧵",
+      tag: "Textile CRM",
+      desc: "Manage fabric orders, buyer follow-ups & seasonal campaigns with ease.",
     },
     {
-      icon: <Building2 className="w-6 h-6" />,
-      tag: "Real Estate",
-      desc: "Track property enquiries & send automated updates to customers across all project stages.",
+      icon: "🏗️",
+      tag: "Builder CRM",
+      desc: "Track site visits, booking pipelines & send automated updates to homebuyers.",
     },
     {
-      icon: <Calculator className="w-6 h-6" />,
-      tag: "Finance",
-      desc: "Automate client reminders, document collection & compliance follow-ups for CA firms.",
+      icon: "⚖️",
+      tag: "CA CRM",
+      desc: "Automate client reminders, document collection & tax deadline alerts.",
     },
     {
-      icon: <Factory className="w-6 h-6" />,
-      tag: "SME",
+      icon: "🏭",
+      tag: "Manufacturer CRM",
       desc: "Retain your B2B customers, manage bulk orders & send bulk follow-up messages easily.",
     },
     {
-      icon: <ShoppingBag className="w-6 h-6" />,
-      tag: "Retail",
-      desc: "Sales reps can view their assigned pipeline, track stage changes & close deals faster.",
+      icon: "🛒",
+      tag: "Seller CRM",
+      desc: "Boost sales with WhatsApp catalogs, order tracking & abandoned cart recovery.",
     },
     {
-      icon: <Settings className="w-6 h-6" />,
-      tag: "Custom",
-      desc: "Tell us your process & we'll build a custom CRM solution around your unique workflow.",
+      icon: "🤝",
+      tag: "Custom CRM",
+      desc: "Not listed? We build fully custom CRM solutions for your unique workflow.",
     },
   ];
 
@@ -94,9 +88,11 @@ export default function Industries() {
             <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta font-[600] tracking-[1.5px] text-[#00bc7d] uppercase mb-2 block ">
               Industries We Serve
             </span>
-            <h2 className="text-[30px] min-[347px]:text-[32px] min-[403px]:text-[38px] sm:text-[40px] md:text-[45px] font-bold leading-[1.15] text-[#1a1a1a] mb-1 font-Sans tracking-tight">
-              CRM Built for Your Business
+            <h2 className="text-[30px] min-[347px]:text-[32px] min-[403px]:text-[38px] sm:text-[40px] md:text-[45px] font-bold leading-[1.15] text-[#1a1a1a] mb-1  font-Sans tracking-tight">
+              CRM Built for {" "}
+              <span className="text-[#00bc7d]">Your Business</span>
             </h2>
+              
             <p className="text-[12px] min-[403px]:text-[14px] sm:text-[16px] text-[#6b7280] max-w-[520px] leading-relaxed font-jakarta">
               Specialised CRM solutions tailored for each sector with
               industry-specific workflows.
@@ -116,7 +112,7 @@ export default function Industries() {
                 <div className="h-full p-8 bg-white border border-slate-200 rounded-[24px] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-black/5 group-hover:border-[#22c55e] cursor-default flex flex-col justify-between">
                   <div>
                     {/* Icon Container */}
-                    <div className="w-12 h-12 bg-[#f3f4f6] text-slate-600 rounded-[16px] flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-[#dcfce7] group-hover:text-[#00bc7d]">
+                    <div className="w-14 h-14 bg-[#f3f4f6] text-slate-600 text-3xl rounded-[16px] flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-[#dcfce7] group-hover:text-[#00bc7d]">
                       {item.icon}
                     </div>
 

@@ -22,7 +22,7 @@ export default function Navbar() {
       <nav className="w-full bg-white border-b border-gray-100 px-6 sm:px-10 md:px-12 lg:px-15 h-20 flex items-center justify-between">
         {/* LOGO */}
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="CRMbot" className="h-10 lg:h-12 w-auto" />
+         <a href="/"><img src="/logo.png" alt="CRMbot" className="h-10 lg:h-12 w-auto" /></a> 
         </div>
 
         {/* DESKTOP NAV LINKS */}
@@ -44,14 +44,15 @@ export default function Navbar() {
         </div>
 
         {/* DESKTOP BUTTON */}
-        <button
+        
+          <a href="#ContactForm"
           style={{ fontFamily: "DM Sans, sans-serif" }}
           className="hidden lg:block bg-[#00bc7d] hover:bg-green-500 text-white text-sm font-semibold px-6 py-2.5 rounded-full transition-colors duration-200"
         >
           Book Demo
-        </button>
+          </a>
 
-        {/* HAMBURGER BUTTON (Visible only on Mobile/Tablet) */}
+        {/* HAMBURGER BUTTON */}
         <div className="lg:hidden">
           <button onClick={toggleMenu} className="text-gray-600 p-2">
             <svg

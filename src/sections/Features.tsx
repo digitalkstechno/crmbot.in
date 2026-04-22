@@ -1,126 +1,147 @@
 "use client";
 
 import { useState } from "react";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, AnimatePresence } from "framer-motion";
 
 // ── feature data ──────────────────────────────────────────────────────────────
-const features = [
+const data = [
   {
-    num: "01",
     title: "Live Dashboard",
     desc: "Real-time view of leads, campaigns, conversion rates & team performance in one place.",
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.8}
-        className="h-6 w-6"
-      >
-        <rect x="3" y="3" width="7" height="7" rx="1.5" />
-        <rect x="14" y="3" width="7" height="7" rx="1.5" />
-        <rect x="3" y="14" width="7" height="7" rx="1.5" />
-        <path d="M14 17.5h7M17.5 14v7" />
-      </svg>
-    ),
-    accent: "#00bc7d",
-    light: "#e6faf3",
+    icon: "📊",
+    stat: "Live Updates",
+    cards: [
+      {
+        icon: "🏠",
+        label: "Away Message Automation",
+        desc: "Automatically replies to customers when agents are unavailable or offline.",
+      },
+      {
+        icon: "🔔",
+        label: "Push Notifications",
+        desc: "Instantly notify users about updates, messages, or campaign statuses.",
+      },
+      {
+        icon: "📅",
+        label: "Schedule Campaign",
+        desc: "Plan and schedule message campaigns for a future date and time.",
+      },
+    ],
   },
   {
-    num: "02",
     title: "Campaign Management",
     desc: "Send bulk WhatsApp messages with rich media, schedule campaigns & track delivery.",
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.8}
-        className="h-6 w-6"
-      >
-        <path d="M22 2L11 13" />
-        <path d="M22 2L15 22l-4-9-9-4 20-7z" />
-      </svg>
-    ),
-    accent: "#00bc7d",
-    light: "#e6faf3",
+    icon: "📣",
+    stat: "Bulk Sending",
+    cards: [
+      {
+        icon: "📤",
+        label: "Bulk WhatsApp Broadcast",
+        desc: "Send thousands of messages instantly with high delivery rates.",
+      },
+      {
+        icon: "📅",
+        label: "Schedule Campaigns",
+        desc: "Plan and schedule message campaigns for a future date and time.",
+      },
+      {
+        icon: "📥",
+        label: "Import and Broadcast",
+        desc: "Import contact lists and immediately broadcast messages to all imported contacts.",
+      },
+    ],
   },
   {
-    num: "03",
     title: "Lead Management",
     desc: "Capture, assign, track & follow up on leads from multiple channels automatically.",
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.8}
-        className="h-6 w-6"
-      >
-        <circle cx="12" cy="8" r="4" />
-        <path d="M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6" />
-        <path d="M19 8l2 2-2 2M16 10h5" />
-      </svg>
-    ),
-    accent: "#00bc7d",
-    light: "#e6faf3",
+    icon: "🎯",
+    stat: "Auto Assign",
+    cards: [
+      {
+        icon: "🎯",
+        label: "Auto Lead Capture",
+        desc: "Automatically capture leads from WhatsApp, web forms and other channels.",
+      },
+      {
+        icon: "🔄",
+        label: "Smart Auto-Assign",
+        desc: "Instantly assign leads to the right team member based on rules.",
+      },
+      {
+        icon: "📌",
+        label: "Follow-up Reminders",
+        desc: "Set smart reminders so no lead ever falls through the cracks.",
+      },
+    ],
   },
   {
-    num: "04",
     title: "WhatsApp Automation",
     desc: "Auto-reply, drip sequences, chatbot flows & instant lead response powered by Meta API.",
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.8}
-        className="h-6 w-6"
-      >
-        <path d="M12 2a10 10 0 1 0 10 10" />
-        <path d="M22 2L12 12" />
-        <path d="M17 2h5v5" />
-      </svg>
-    ),
-    accent: "#00bc7d",
-    light: "#e6faf3",
+    icon: "🤖",
+    // stat: "Meta API",
+    cards: [
+      {
+        icon: "🤖",
+        label: "Chatbot Flows",
+        desc: "Build no-code chatbot flows that handle queries 24/7 automatically.",
+      },
+      {
+        icon: "💬",
+        label: "Auto Reply",
+        desc: "Instantly reply to incoming messages with smart trigger-based responses.",
+      },
+      {
+        icon: "⏱️",
+        label: "Drip Sequences",
+        desc: "Send timed follow-up message sequences to nurture leads automatically.",
+      },
+    ],
   },
   {
-    num: "05",
     title: "Templates",
     desc: "Pre-approved WhatsApp message templates for every stage of the customer journey.",
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.8}
-        className="h-6 w-6"
-      >
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M3 9h18M9 21V9" />
-      </svg>
-    ),
-    accent: "#00bc7d",
-    light: "#e6faf3",
+    icon: "📄",
+    stat: "Pre-approved",
+    cards: [
+      {
+        icon: "✅",
+        label: "Pre-approved Templates",
+        desc: "Use Meta-verified templates that get delivered without any issues.",
+      },
+      {
+        icon: "📄",
+        label: "60+ Ready Templates",
+        desc: "Choose from a library of templates for sales, support and marketing.",
+      },
+      {
+        icon: "✏️",
+        label: "Custom Templates",
+        desc: "Create your own branded templates for any stage of the journey.",
+      },
+    ],
   },
   {
-    num: "06",
     title: "Reports & Analytics",
     desc: "Detailed reports on open rates, response time, revenue & team-level insights.",
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.8}
-        className="h-6 w-6"
-      >
-        <path d="M18 20V10M12 20V4M6 20v-6" />
-      </svg>
-    ),
-    accent: "#00bc7d",
-    light: "#e6faf3",
+    icon: "📈",
+    stat: "Deep Insights",
+    cards: [
+      {
+        icon: "📊",
+        label: "Campaign Reports",
+        desc: "Track open rates, clicks and delivery for every campaign you send.",
+      },
+      {
+        icon: "💰",
+        label: "Revenue Tracking",
+        desc: "Connect deals to conversations and track revenue generated via WhatsApp.",
+      },
+      {
+        icon: "🕐",
+        label: "Response Time Analysis",
+        desc: "Measure how fast your team responds and identify bottlenecks.",
+      },
+    ],
   },
 ];
 
@@ -144,102 +165,8 @@ const fadeInUp: Variants = {
   },
 };
 
-// ── card ──────────────────────────────────────────────────────────────────────
-function FeatureCard({
-  num,
-  title,
-  desc,
-  icon,
-  index,
-}: {
-  num: string;
-  title: string;
-  desc: string;
-  icon: React.ReactNode;
-  index: number;
-}) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="group bg-[#f8fffe] relative overflow-hidden rounded-3xl border border-slate-100 
-        transition-all duration-300 hover:-translate-y-2 hover:border-[#00bc7d]/30 shadow-[0_10px_30px_rgba(0,0,0,0.08)]
-        hover:shadow-3xl hover:shadow-[#00bc7d]/10 cursor-pointer"
-      style={{
-        animationDelay: `${index * 80}ms`,
-      }}
-    >
-      {/* ── gradient corner fill on hover ── */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-3xl"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 60% at 100% 0%, #e6faf3 0%, transparent 70%)",
-        }}
-      />
-
-      {/* ── large number ── */}
-      <span
-        className="pointer-events-none absolute right-5 top-4 font-sans-dm select-none text-[4rem]
-          font-extrabold leading-none transition-colors duration-300"
-        style={{
-          color: hovered ? "#00bc7d20" : "#f1f5f9",
-          fontFamily: "'DM Sans', sans-serif",
-        }}
-      >
-        {num}
-      </span>
-
-      {/* ── content ── */}
-      <div className="relative z-10 flex flex-col gap-4 p-7">
-        {/* top row: icon + pill */}
-        <div className="flex items-start justify-between">
-          <div
-            className="flex h-12 w-12 items-center justify-center rounded-2xl transition-all
-              duration-300 group-hover:scale-110"
-            style={{
-              background: hovered ? "#00bc7d" : "#e6faf3",
-              color: hovered ? "#ffffff" : "#00bc7d",
-            }}
-          >
-            {icon}
-          </div>
-        </div>
-
-        {/* title */}
-        <h3
-          className="text-xl font-bold leading-snug text-slate-900 transition-colors duration-300
-            group-hover:text-slate-900"
-          style={{ fontFamily: "'DM Sans', sans-serif" }}
-        >
-          {title}
-        </h3>
-
-        {/* desc */}
-        <p
-          className="text-sm leading-relaxed text-slate-500"
-          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-        >
-          {desc}
-        </p>
-      </div>
-
-      {/* ── bottom accent line ── */}
-      <div
-        className="absolute bottom-0 left-0 h-[3px] rounded-b-3xl transition-all duration-500"
-        style={{
-          width: hovered ? "100%" : "0%",
-          background: "linear-gradient(90deg, #00bc7d, #00e09a)",
-        }}
-      />
-    </div>
-  );
-}
-
-// ══════════════════════════════════════════════════════════════════════════════
 export default function Features() {
+  const [active, setActive] = useState(0);
   return (
     <>
       <style>{`
@@ -263,7 +190,7 @@ export default function Features() {
             </span>
             <h2 className="text-[29px] min-[347px]:text-[31px] min-[403px]:text-[37px] sm:text-[39px] md:text-[43px] font-bold leading-[1.15] text-[#1a1a1a] mb-1 font-Sans tracking-tight">
               Everything You Need to <br />
-              Convert & Retain
+              <span className="text-[#00bc7d]">Convert & Retain</span>
             </h2>
             <p className="text-[12px] min-[403px]:text-[14px] sm:text-[16px] text-[#6b7280] max-w-[520px] leading-relaxed font-jakarta">
               A complete growth stack — from first contact to closed deal, all
@@ -273,13 +200,117 @@ export default function Features() {
 
           {/* ── grid ── */}
           <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.2 }}
-                      viewport={{ once: true }} className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((f, i) => (
-              <FeatureCard key={f.num} index={i} {...f} />
-            ))}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 lg:grid-cols-[25%_75%] gap-x-10 mx-0 md:mx-5 items-start"
+          >
+            {/* LEFT — Feature List */}
+            <div className="w-[100%] order-1 lg:order-1">
+              <div className="flex flex-row justify-center align-center flex-wrap gap-3 lg:hidden mb-6">
+                {data.map((item, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActive(i)}
+                    title={item.title}
+                    className={`w-12 h-12 flex justify-center items-center rounded-2xl flex text-2xl border transition-all duration-200
+                    ${
+                      active === i
+                        ? "bg-green-600 border-green-600 shadow-lg shadow-green-200 scale-110"
+                        : "bg-gray-50 border-gray-100 hover:bg-white hover:border-green-200"
+                    }`}
+                  >
+                    {item.icon}
+                  </button>
+                ))}
+              </div>
+
+              <div className="hidden lg:flex flex-col gap-3">
+                {data.map((item, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActive(i)}
+                    className={`group ] text-left px-4 md:px-5 py-4 rounded-2xl transition-all duration-300 flex items-center gap-4 border
+                    ${
+                      active === i
+                        ? "bg-white border-green-200 shadow-xl shadow-green-100/50 scale-[1.02]"
+                        : "bg-gray-50/50 border-transparent hover:bg-white hover:border-green-100"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 flex-1 min-w-0">
+                      <span className="text-xl flex-shrink-0">{item.icon}</span>
+                      <span
+                        className={`font-semibold text-sm md:text-[15px] truncate transition-colors
+                      ${active === i ? "text-gray-900" : "text-gray-500 group-hover:text-gray-800"}`}
+                      >
+                        {item.title}
+                      </span>
+                    </div>
+                    <div
+                      className={`w-1.5 h-8 rounded-full flex-shrink-0 transition-all
+                    ${active === i ? "bg-green-500" : "bg-transparent"}`}
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT — 3 Cards */}
+            <div className="lg:sticky lg:top-28 order-1 lg:order-2">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {/* Feature header */}
+                  <div className="w-15 h-15 bg-gradient-to-br from-green-100 to-green-50 rounded-2xl flex items-center justify-center text-3xl border border-green-100 shadow-inner flex-shrink-0">
+                    {data[active].icon}
+                  </div>
+                  <div className="mb-2 flex items-center gap-3">
+                    <div>
+                      <h3 className="text-lg pt-2 font-bold text-gray-900 leading-tight">
+                        {data[active].title}
+                      </h3>
+                      <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-5">
+                        {data[active].desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* 3 Cards Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-5 w-full lg:w-[97%]">
+                    {data[active].cards.map((card, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.92 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3, delay: i * 0.07 }}
+                        className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-green-100 transition-all duration-200 p-4"
+                      >
+                        {/* Top row: icon + badge */}
+                        <div className="flex items-start justify-between mb-3">
+                          <div className="w-9 h-9 bg-green-50 rounded-xl flex items-center justify-center text-lg border border-green-100">
+                            {card.icon}
+                          </div>
+                        </div>
+                        {/* Title */}
+                        <p className="text-base font-bold text-gray-800 leading-snug mb-1.5">
+                          {card.label}
+                        </p>
+                        {/* Description */}
+                        <p className="text-[13px] text-gray-400 leading-relaxed">
+                          {card.desc}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </motion.div>
         </div>
       </section>

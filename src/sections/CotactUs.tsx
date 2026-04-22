@@ -143,7 +143,7 @@ function Input({
   );
 }
 
-// ══════════════════════════════════════════════════════════════════════════════
+
 export default function ContactUs() {
   const [form, setForm] = useState<FormData>({
     firstName: "",
@@ -191,7 +191,10 @@ export default function ContactUs() {
               Get In Touch
             </span>
             <h2 className="text-[30px] min-[347px]:text-[32px] min-[403px]:text-[38px] sm:text-[40px] md:text-[45px] font-bold leading-[1.15] text-[#1a1a1a] mb-1 font-Sans tracking-tight">
-              Visit Our Offices
+              Visit{" "}
+              <span className="text-[#00bc7d]">
+                Our Offices
+              </span>
             </h2>
             <p className="text-[12px] min-[403px]:text-[14px] sm:text-[16px] text-[#6b7280] max-w-[520px] leading-relaxed font-jakarta">
               Two locations in Surat &amp; Baroda — ready to serve you
@@ -259,7 +262,7 @@ export default function ContactUs() {
       </section>
 
       {/* ── CONTACT + FORM ──────────────────────────────────────────────────── */}
-      <section className="font-sans-dm bg-white py-10 px-6 sm:px-10 md:px-12 lg:px-15">
+      <section className="font-sans-dm bg-white py-10 px-6 sm:px-10 md:px-12 lg:px-15" id="ContactForm">
         <div className="mx-auto max-w-6xl">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             <div className="flex flex-col text-center md:text-left w-full">

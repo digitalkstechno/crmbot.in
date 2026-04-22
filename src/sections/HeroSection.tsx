@@ -198,7 +198,7 @@ export default function HeroSection() {
               <motion.a
                 whileHover={{ scale: 1.03 }} 
                 whileTap={{ scale: 0.97 }}
-                href="#"
+                href="#ContactForm"
                 className=" inline-flex items-center justify-center gap-2.5 rounded-2xl bg-emerald-500 px-0 min-[377px]:px-5 sm:px-6 2xl:px-10 py-2 sm:py-3.5 2xl:py-5 text-sm 2xl:text-[16px] font-bold text-white shadow-lg shadow-emerald-300/50 transition-all hover:-translate-y-0.5 hover:bg-emerald-600 hover:shadow-emerald-400/50 max-[377px]:w-full"
               >
                 <svg
@@ -217,7 +217,7 @@ export default function HeroSection() {
               <motion.a 
                 whileHover={{ scale: 1.03 }} 
                 whileTap={{ scale: 0.97 }}
-                href="#"
+                href="#portfolio"
                 className="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-slate-200 bg-white px-0 min-[377px]:px-5 sm:px-6 2xl:px-10 py-2 sm:py-3.5 2xl:py-5 text-sm 2xl:text-[16px] font-bold text-slate-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-emerald-300 hover:text-emerald-700 max-[377px]:w-full"
               >
                 <svg

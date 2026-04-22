@@ -85,7 +85,8 @@ const Portfolio = () => {
             Our Work
           </span>
           <h2 className="text-[30px] min-[347px]:text-[32px] min-[403px]:text-[38px] sm:text-[40px] md:text-[45px] font-bold leading-[1.15] text-[#1a1a1a] mb-1 font-Sans tracking-tight">
-            Real Project Real Result
+            Real Project {" "}
+            <span className="text-[#00bc7d]">Real Result</span>
           </h2>
           <p className="text-[12px] min-[403px]:text-[14px] sm:text-[16px] text-[#6b7280] max-w-[520px] leading-relaxed font-jakarta">
             A complete growth stack — from first contact to closed deal, all

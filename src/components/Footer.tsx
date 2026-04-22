@@ -9,11 +9,13 @@ const Footer = () => {
           <div className="space-y-6">
             <div className="space-y-6">
               <div className="inline-block rounded-xl">
-                <img
-                  src="/footer-logo.png"
-                  alt="CRMbot.in"
-                  className="h-12 w-auto object-contain"
-                />
+                <a href="/">
+                  <img
+                    src="/footer-logo.png"
+                    alt="CRMbot.in"
+                    className="h-12 w-auto object-contain"
+                  />
+                </a>
               </div>
             </div>
             <p className="text-gray-500 text-[14px] leading-relaxed w-full sm:max-w-xs">
@@ -81,7 +83,7 @@ const Footer = () => {
                 <a href="#contact">Contact</a>
               </li>
               <li className="hover:text-green-600 cursor-pointer transition">
-                Book Demo
+                <a href="#ContactForm">Book Demo</a>
               </li>
               <li className="hover:text-green-600 cursor-pointer transition font-bold">
                 Call Us

@@ -1,8 +1,19 @@
 "use client";
-import React from "react";
-import { motion, Variants } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, Variants, useScroll, useTransform } from "framer-motion";
 
 const Onboarding = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start center", "end center"],
+  });
+  const maxProgress = useRef(0);
+  const lineScale = useTransform(scrollYProgress, (v) => {
+    if (v > maxProgress.current) maxProgress.current = v;
+    return maxProgress.current;
+  });
+
   const steps = [
     {
       number: "01",
@@ -60,7 +71,10 @@ const Onboarding = () => {
       `,
         }}
       />
-      <section className="bg-[#eff9f2] py-20 px-6 sm:px-10 md:px-12 lg:px-15 flex flex-col justify-center">
+      <section
+        ref={sectionRef}
+        className="bg-[#eff9f2] py-20 px-6 sm:px-10 md:px-12 lg:px-15 flex flex-col justify-center"
+      >
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -69,12 +83,11 @@ const Onboarding = () => {
             transition={{ duration: 0.6 }}
             className="mb-14 flex flex-col items-center text-center"
           >
-            {/* Subheading */}
             <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta font-[600] tracking-[1.5px] text-[#00bc7d] uppercase mb-2 block">
               Simple Onboarding
             </span>
             <h2 className="text-[30px] min-[347px]:text-[32px] min-[403px]:text-[38px] sm:text-[40px] md:text-[45px] font-bold leading-[1.15] text-[#1a1a1a] mb-1 font-Sans tracking-tight">
-              Up & Running in 4 Steps
+              Up & Running in <span className="text-[#00bc7d]">4 Steps</span>
             </h2>
             <p className="text-[12px] min-[403px]:text-[14px] sm:text-[16px] text-[#6b7280] max-w-[520px] leading-relaxed font-jakarta">
               From signup to your first automated campaign in under a week
@@ -89,13 +102,10 @@ const Onboarding = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="relative grid grid-cols-1 md:grid-cols-4 gap-5"
           >
-            {/* Connecting Line (Desktop Only) */}
-            <motion.div 
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              style={{ originX: 0 }}
-              className="hidden md:block absolute top-8 left-[12%] right-[12%] h-[2px] bg-[#86efac] -z-0" 
+            {/* Connecting Line */}
+            <motion.div
+              style={{ scaleX: lineScale, originX: 0 }}
+              className="hidden md:block absolute top-8 left-[12%] right-[12%] h-[2px] bg-[#86efac] -z-0"
             />
 
             {steps.map((step, index) => (
@@ -116,11 +126,11 @@ const Onboarding = () => {
                   {step.title}
                 </h3>
 
-                {/* Step Description */}
+                {/* Description */}
                 <p className="text-[#6b7280] text-center leading-relaxed md:text-[14px] lg:text-[15px] md:text-base px-4">
                   {step.description}
                 </p>
-                        </motion.div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
