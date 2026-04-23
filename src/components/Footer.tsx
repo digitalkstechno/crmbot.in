@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image"
 
 const Footer = () => {
   return (
@@ -9,13 +10,7 @@ const Footer = () => {
           <div className="space-y-6">
             <div className="space-y-6">
               <div className="inline-block rounded-xl">
-                <a href="/">
-                  <img
-                    src="/footer-logo.png"
-                    alt="CRMbot.in"
-                    className="h-12 w-auto object-contain"
-                  />
-                </a>
+                <a href="/"><Image src="/footer-logo.png" alt="CRMbot" height={48} width={120} className="h-10 lg:h-12 w-auto" /></a>
               </div>
             </div>
             <p className="text-gray-500 text-[14px] leading-relaxed w-full sm:max-w-xs">

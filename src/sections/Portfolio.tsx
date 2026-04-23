@@ -69,7 +69,7 @@ const Portfolio = () => {
 
   return (
     <section
-      className="bg-white py-16 px-6 sm:px-10 md:px-12 lg:px-15 font-jakarta"
+      className="bg-white py-18 px-6 sm:px-10 md:px-12 lg:px-15 font-jakarta"
       id="portfolio"
     >
       <div className="max-w-7xl mx-auto">
@@ -79,7 +79,6 @@ const Portfolio = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
           className="mb-14 flex flex-col items-center text-center"
-          id="features"
         >
           <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta font-[600] tracking-[1.5px] text-[#00bc7d] uppercase mb-2 block ">
             Our Work

@@ -65,7 +65,6 @@ export default function Industries() {
       <style
         dangerouslySetInnerHTML={{
           __html: `
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
         .font-Sans { font-family: 'DM Sans', sans-serif } 
         .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
       `,
@@ -88,7 +87,7 @@ export default function Industries() {
             <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta font-[600] tracking-[1.5px] text-[#00bc7d] uppercase mb-2 block ">
               Industries We Serve
             </span>
-            <h2 className="text-[30px] min-[347px]:text-[32px] min-[403px]:text-[38px] sm:text-[40px] md:text-[45px] font-bold leading-[1.15] text-[#1a1a1a] mb-1  font-Sans tracking-tight">
+            <h2 className="text-[30px] min-[347px]:text-[32px] min-[403px]:text-[38px] sm:text-[40px] md:text-[45px] font-bold leading-[1.15] text-[#1a1a1a] mb-1 font-Sans tracking-tight">
               CRM Built for {" "}
               <span className="text-[#00bc7d]">Your Business</span>
             </h2>
@@ -118,7 +117,7 @@ export default function Industries() {
 
                     {/* Tag and Title */}
                     <div className="mb-3">
-                      <span className="text-[12px] font-bold text-[#00bc7d] uppercase tracking-wider font-jakarta block mb-1">
+                      <span className="text-[14px] font-bold text-[#00bc7d] uppercase tracking-wider font-Sans block mb-1">
                         {item.tag}
                       </span>
                     </div>

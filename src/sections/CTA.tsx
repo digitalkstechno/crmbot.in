@@ -79,7 +79,7 @@ export default function CTA() {
           {/* CTA button */}
           <Link
             href="#ContactForm"
-            className="font-jakarta inline-flex items-center gap-2.5 rounded-full bg-[#00bc7d] px-6 sm:px-7 py-2.5 sm:py-3 text-sm font-bold text-white shadow-lg shadow-[#00bc7d]/25 transition-all hover:-translate-y-0.5 hover:bg-[#009d69] hover:shadow-[#00bc7d]/40"
+            className="font-jakarta inline-flex items-center gap-2.5 rounded-full bg-[#00bc7d] px-6 sm:px-7 py-2.5 sm:py-3 text-sm font-bold text-white shadow-lg shadow-[#00bc7d]/25 transition-all hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-[#00bc7d]/40"
           >
             {/* calendar icon */}
             <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">

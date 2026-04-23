@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Image from "next/image"
 
 export default function Navbar() {
   const router = useRouter();
@@ -11,6 +12,7 @@ export default function Navbar() {
     { href: "#features", label: "Features" },
     { href: "#portfolio", label: "Portfolio" },
     { href: "#testimonials", label: "Testimonials" },
+    { href: "#faq", label: "FAQ" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -22,7 +24,7 @@ export default function Navbar() {
       <nav className="w-full bg-white border-b border-gray-100 px-6 sm:px-10 md:px-12 lg:px-15 h-20 flex items-center justify-between">
         {/* LOGO */}
         <div className="flex items-center gap-2">
-         <a href="/"><img src="/logo.png" alt="CRMbot" className="h-10 lg:h-12 w-auto" /></a> 
+        <a href="/"><Image src="/logo.png" alt="CRMbot" height={48} width={120} className="h-10 lg:h-12 w-auto" /></a> 
         </div>
 
         {/* DESKTOP NAV LINKS */}

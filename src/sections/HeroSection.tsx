@@ -140,7 +140,6 @@ export default function HeroSection() {
     <>
       {/* ── global keyframes: only valid way in Next.js App Router ── */}
       <style>{`
-       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
         @keyframes floatY  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
         @keyframes floatY2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)}  }
@@ -199,7 +198,7 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.03 }} 
                 whileTap={{ scale: 0.97 }}
                 href="#ContactForm"
-                className=" inline-flex items-center justify-center gap-2.5 rounded-2xl bg-emerald-500 px-0 min-[377px]:px-5 sm:px-6 2xl:px-10 py-2 sm:py-3.5 2xl:py-5 text-sm 2xl:text-[16px] font-bold text-white shadow-lg shadow-emerald-300/50 transition-all hover:-translate-y-0.5 hover:bg-emerald-600 hover:shadow-emerald-400/50 max-[377px]:w-full"
+                className=" inline-flex items-center justify-center gap-2.5 rounded-2xl bg-emerald-500 px-0 min-[377px]:px-5 sm:px-6 2xl:px-10 py-2 sm:py-3.5 2xl:py-5 text-sm 2xl:text-[16px] font-bold text-white shadow-lg shadow-emerald-300/50 transition-all hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-emerald-400/50 max-[377px]:w-full"
               >
                 <svg
                   className="h-4 w-4"

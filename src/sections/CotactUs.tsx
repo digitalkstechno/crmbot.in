@@ -429,7 +429,7 @@ export default function ContactUs() {
                     type="submit"
                     className="font-jakarta mt-1 w-full rounded-2xl bg-[#00bc7d] py-2.5 text-sm font-bold
                       text-white shadow-lg shadow-[#00bc7d]/30 transition-all
-                      hover:-translate-y-0.5 hover:bg-[#009d69] hover:shadow-[#00bc7d]/40
+                      hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-[#00bc7d]/40
                       active:translate-y-0"
                   >
                     Send Message →

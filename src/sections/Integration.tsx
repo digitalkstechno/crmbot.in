@@ -59,7 +59,6 @@ const Integration = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
           className="mb-14 flex flex-col items-center text-center"
-          id="features"
         >
           <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta font-[600] tracking-[1.5px] text-[#00bc7d] uppercase mb-2 block ">
             Connects with your stack

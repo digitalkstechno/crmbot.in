@@ -8,8 +8,8 @@ const Onboarding = () => {
     target: sectionRef,
     offset: ["start center", "end center"],
   });
-  const maxProgress = useRef(0);
- 
+  // const maxProgress = useRef(0);
+
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const steps = [
@@ -58,15 +58,22 @@ const Onboarding = () => {
     },
   };
 
+  const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
     <div suppressHydrationWarning className="relative">
       <style
         dangerouslySetInnerHTML={{
           __html: `
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
-        .font-Sans { font-family: 'DM Sans', sans-serif } 
-        .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
-      `,
+              .font-Sans { font-family: 'DM Sans', sans-serif } 
+              .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }`,
         }}
       />
       <section
@@ -75,16 +82,16 @@ const Onboarding = () => {
       >
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
             className="mb-14 flex flex-col items-center text-center"
           >
-            <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta font-[600] tracking-[1.5px] text-[#00bc7d] uppercase mb-2 block">
+            <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta font-[600] tracking-[1.5px] text-[#00bc7d] uppercase mb-2 block ">
               Simple Onboarding
             </span>
-            <h2 className="text-[30px] min-[347px]:text-[32px] min-[403px]:text-[38px] sm:text-[40px] md:text-[45px] font-bold leading-[1.15] text-[#1a1a1a] mb-1 font-Sans tracking-tight">
+            <h2 className="text-[29px] min-[347px]:text-[31px] min-[403px]:text-[37px] sm:text-[39px] md:text-[43px] font-bold leading-[1.15] text-[#1a1a1a] mb-1 font-Sans tracking-tight">
               Up & Running in <span className="text-[#00bc7d]">4 Steps</span>
             </h2>
             <p className="text-[12px] min-[403px]:text-[14px] sm:text-[16px] text-[#6b7280] max-w-[520px] leading-relaxed font-jakarta">
@@ -120,12 +127,12 @@ const Onboarding = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-[#111827] text-lg font-[500] mb-2">
+                <h3 className="text-[#111827] font-Sans text-lg font-[500] mb-2">
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-[#6b7280] text-center leading-relaxed md:text-[14px] lg:text-[15px] md:text-base px-4">
+                <p className="text-[#6b7280] font-jakarta text-center leading-relaxed md:text-[14px] lg:text-[15px] md:text-base px-4">
                   {step.description}
                 </p>
               </motion.div>

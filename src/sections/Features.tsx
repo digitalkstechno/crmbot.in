@@ -169,11 +169,15 @@ export default function Features() {
   const [active, setActive] = useState(0);
   return (
     <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-      `}</style>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+              .font-Sans { font-family: 'DM Sans', sans-serif } 
+              .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }`,
+        }}
+      />
 
-      <section className="bg-[#ffff] py-24 px-6 sm:px-10 md:px-12 lg:px-15">
+      <section className="bg-[#ffff] py-20 px-6 sm:px-10 md:px-12 lg:px-15"  id="features">
         <div className="mx-auto max-w-6xl">
           {/* ── header ── */}
 
@@ -183,7 +187,6 @@ export default function Features() {
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
             className="mb-14 flex flex-col items-center text-center"
-            id="features"
           >
             <span className="text-[12px] min-[403px]:text-[13px] sm:text-[14px] font-jakarta font-[600] tracking-[1.5px] text-[#00bc7d] uppercase mb-2 block ">
               Platform Features
@@ -204,7 +207,7 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.5 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 lg:grid-cols-[25%_75%] gap-x-10 mx-0 md:mx-5 items-start"
+            className="grid grid-cols-1 lg:grid-cols-[25%_75%] gap-x-10 items-start"
           >
             {/* LEFT — Feature List */}
             <div className="w-[100%] order-1 lg:order-1">
@@ -238,7 +241,7 @@ export default function Features() {
                         : "bg-gray-50/50 border-transparent hover:bg-white hover:border-green-100"
                     }`}
                   >
-                    <div className="flex items-center gap-3 flex-1 min-w-0">
+                    <div className="flex items-center gap-3 flex-1 min-w-0 font-Sans">
                       <span className="text-xl flex-shrink-0">{item.icon}</span>
                       <span
                         className={`font-semibold text-sm md:text-[15px] truncate transition-colors
@@ -272,10 +275,10 @@ export default function Features() {
                   </div>
                   <div className="mb-2 flex items-center gap-3">
                     <div>
-                      <h3 className="text-lg pt-2 font-bold text-gray-900 leading-tight">
+                      <h3 className="text-lg pt-2 font-bold text-gray-900 leading-tight font-Sans">
                         {data[active].title}
                       </h3>
-                      <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-5">
+                      <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-5 font-jakarta">
                         {data[active].desc}
                       </p>
                     </div>
@@ -292,17 +295,17 @@ export default function Features() {
                         className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-green-100 transition-all duration-200 p-4"
                       >
                         {/* Top row: icon + badge */}
-                        <div className="flex items-start justify-between mb-3">
+                        <div className="flex items-start justify-between mb-3 ">
                           <div className="w-9 h-9 bg-green-50 rounded-xl flex items-center justify-center text-lg border border-green-100">
                             {card.icon}
                           </div>
                         </div>
                         {/* Title */}
-                        <p className="text-base font-bold text-gray-800 leading-snug mb-1.5">
+                        <p className="text-base font-bold text-gray-800 leading-snug mb-1.5 font-Sans">
                           {card.label}
                         </p>
                         {/* Description */}
-                        <p className="text-[13px] text-gray-400 leading-relaxed">
+                        <p className="text-[13px] text-gray-400 leading-relaxed font-jakarta">
                           {card.desc}
                         </p>
                       </motion.div>
